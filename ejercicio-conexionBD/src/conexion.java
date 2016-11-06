@@ -13,10 +13,10 @@ public class conexion {
 			//1.Creamos una conexion para conectarnos a la base de datos
 			Connection miConexion = DriverManager.getConnection(source,usuario,password);
 			//2.Crear el statement
-			Statement sentencia = miConexion.createStatement();
+			Statement sentenciaSelect = miConexion.createStatement();
 			//3.Ejecutar la sentencia sql
 			miConsulta = "select idEmpleado,nombre,apellidos,fechanac FROM EMPLEADOS";
-			ResultSet numFilas = sentencia.executeQuery(miConsulta);
+			ResultSet numFilas = sentenciaSelect.executeQuery(miConsulta);
 			
 			//4.Mostrar el resultado
 			
@@ -25,6 +25,7 @@ public class conexion {
 				System.out.println(numFilas.getString("nombre" + " ")+numFilas.getString("apellidos"+" ")+numFilas.getString("fechaNac"+" "));
 			}
 			
+			miConexion.close();
 		}catch(Exception e){
 			System.out.print("No se puede conectar");
 			e.printStackTrace();
