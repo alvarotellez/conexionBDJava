@@ -26,9 +26,9 @@ public class conexion {
 			}
 			
 			miConexion.close();
-		}catch(Exception e){
-			System.out.print("No se puede conectar");
-			e.printStackTrace();
+		}catch(SQLException sqle){
+			System.err.println(sqle);
+			
 		}
 	}
 }
