@@ -21,7 +21,7 @@ public class conexion {
 			//4.Mostrar el resultado
 			
 			while(numFilas.next()){
-				//Le metemos un espacio para que no nos muestre todo junto
+				//Le metemos un espacio para que no nos muestre todo 
 				System.out.println(numFilas.getString("nombre" + " ")+numFilas.getString("apellidos"+" ")+numFilas.getString("fechaNac"+" "));
 			}
 			
