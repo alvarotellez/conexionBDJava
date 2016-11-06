@@ -1,9 +1,17 @@
 import java.sql.*;
+import java.util.Scanner;
 public class conexion {
 	public static void main(String[] args) {
 		try{
+			//Entorno:
 			String miConsulta;
+			String nombre;
+			String apellidos;
+			Scanner sc = new Scanner(System.in);
 			
+			
+			//Algoritmo:
+			//PARA HACER EL SELECT
 			//Ruta de acceso, en localhost metemos el puerto
 			String source = "jdbc:sqlserever://localhost";
 			//Nombre de usuario
@@ -25,6 +33,18 @@ public class conexion {
 				System.out.println(numFilas.getString("nombre" + " ")+numFilas.getString("apellidos"+" ")+numFilas.getString("fechaNac"+" "));
 			}
 			
+			//PARA HACER EL INSERT
+			System.out.println("Introduzca el nombre del empleado: ");
+			nombre = sc.nextLine();
+			
+			System.out.println("Introduzca los apellidos del empleado: ");
+			apellidos = sc.nextLine();
+			
+			PreparedStatement stmt = miConexion.prepareStatement("INSERT INTO empleados VALUES(?,?)");	
+			stmt.setString(1, nombre);
+			stmt.setString(2, apellidos);
+			
+			stmt.executeUpdate();
 			miConexion.close();
 		}catch(SQLException sqle){
 			System.err.println(sqle);
